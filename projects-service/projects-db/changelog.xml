@@ -5,22 +5,35 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="31.12.2018-01" author="ikazerskiy">
+    <changeSet id="1" author="ikazerskiy">
         <comment>Add projects table</comment>
         <sql>
-            CREATE TABLE projects (
+            CREATE TABLE projects.projects (
             uid VARCHAR(36) NOT NULL,
             name VARCHAR(100) NOT NULL,
-            create_date DATETIME NOT NULL,
-            update_date DATETIME NOT NULL,
-            description TINYTEXT NULL,
-            PRIMARY KEY (uid),
-            UNIQUE INDEX udx_name (name ASC),
-            INDEX idx_name (name ASC))
-            COMMENT = 'Проекты';
+            create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+            update_date TIMESTAMP NOT NULL,
+            description TEXT NULL);
+			
+			COMMENT ON TABLE projects.projects IS 'Проекты';
+			COMMENT ON COLUMN projects.projects.uid IS 'Идентификатор записи';
+			COMMENT ON COLUMN projects.projects.name IS 'Наименование проекта';
+			COMMENT ON COLUMN projects.projects.create_date IS 'Дата и время создания записи';
+			COMMENT ON COLUMN projects.projects.update_date IS 'Дата и время обновления записи';
+			COMMENT ON COLUMN projects.projects.description IS 'Описание';
         </sql>
         <rollback>
-            DROP TABLE projects;
+            DROP TABLE projects.projects;
+        </rollback>
+    </changeSet>
+
+	<changeSet id="2" author="ikazerskiy">
+        <comment>Add unique index</comment>
+        <sql>
+           CREATE UNIQUE INDEX udx_projects_name ON projects.projects (name);
+        </sql>
+        <rollback>
+            DROP INDEX projects.udx_projects_name;
         </rollback>
     </changeSet>
 
