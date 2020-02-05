@@ -1,0 +1,27 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="31.12.2018-01" author="ikazerskiy">
+        <comment>Add projects table</comment>
+        <sql>
+            CREATE TABLE projects (
+            uid VARCHAR(36) NOT NULL,
+            name VARCHAR(100) NOT NULL,
+            create_date DATETIME NOT NULL,
+            update_date DATETIME NOT NULL,
+            description TINYTEXT NULL,
+            PRIMARY KEY (uid),
+            UNIQUE INDEX udx_name (name ASC),
+            INDEX idx_name (name ASC))
+            COMMENT = 'Проекты';
+        </sql>
+        <rollback>
+            DROP TABLE projects;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

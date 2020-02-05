@@ -1,0 +1,1 @@
+liquibase --driver=org.postgresql.Driver --classpath=lib --changeLogFile=changelog.xml --url="jdbc:postgresql://127.0.0.1:5432/projects_db" --username=projects_pg --password=projects_pg migrate
