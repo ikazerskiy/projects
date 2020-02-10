@@ -1,1 +1,6 @@
 apply plugin: 'java'
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springboot
+    implementation project(':projects-service-api')
+}

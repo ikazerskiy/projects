@@ -1,0 +1,11 @@
+ext {
+    springboot = '2.2.4.RELEASE'
+    springframework = '5.2.3.RELEASE'
+    springdata = '2.2.4.RELEASE'
+}
+
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+}

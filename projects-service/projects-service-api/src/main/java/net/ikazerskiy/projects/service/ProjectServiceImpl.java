@@ -13,8 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
+    private final ProjectRepository projectRepository;
+
     @Autowired
-    private ProjectRepository projectRepository;
+    public ProjectServiceImpl(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
 
     @Override
     @Transactional(readOnly = true)
