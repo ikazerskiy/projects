@@ -1,4 +1,4 @@
-package net.ikazerskiy.projects.service;
+package net.ikazerskiy.projects.service.impl;
 
 import net.ikazerskiy.projects.service.api.ProjectService;
 import net.ikazerskiy.projects.service.api.dto.ProjectDto;
