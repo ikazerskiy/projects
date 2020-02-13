@@ -2,7 +2,7 @@ ext {
     springboot = '2.2.4.RELEASE'
     springframework = '5.2.3.RELEASE'
     springdata = '2.2.4.RELEASE'
-    postgresql = '9.1-901.jdbc4'
+    postgresql = '9.4.1212'
     junit = '4.12'
 }
 
